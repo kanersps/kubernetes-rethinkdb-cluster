@@ -3,21 +3,6 @@ kind: Service
 metadata:
   labels:
     db: rethinkdb
-  name: rethinkdb-admin
-spec:
-  type: LoadBalancer
-  ports:
-   - port: 8080
-     targetPort: admin
-  selector:
-    db: rethinkdb
-    role: admin
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    db: rethinkdb
   name: rethinkdb
 spec:
   ports:
@@ -26,18 +11,3 @@ spec:
   selector:
     db: rethinkdb
     role: replica
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    db: rethinkdb
-  name: rethinkdb-proxy
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 28015
-      targetPort: driver
-  selector:
-    db: rethinkdb
-    role: proxy

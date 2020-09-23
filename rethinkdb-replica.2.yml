@@ -5,6 +5,9 @@ metadata:
     db: rethinkdb
   name: rethinkdb-replica-2
 spec:
+  selector:
+    matchLabels:
+      db: rethinkdb
   replicas: 1
   template:
     metadata:
